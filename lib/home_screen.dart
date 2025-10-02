@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -58,11 +59,11 @@ class HomeScreen extends StatelessWidget {
                   itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.only(right: 40),
+                      padding: const EdgeInsets.only(right: 30),
                       child: SizedBox(
-                        width: 100,
+                        // width: 100,
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             color: categories[index].color,
                             borderRadius: BorderRadius.circular(8),
@@ -105,12 +106,21 @@ class HomeScreen extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // <- Add this line
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.heart_broken_outlined),
+            label: "heart",
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_city_outlined),
+            label: "Location",
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "User"),
         ],
       ),
     );
