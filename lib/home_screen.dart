@@ -10,41 +10,44 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ListTile(
+                title: Text("Location"),
+                subtitle: Row(
+                  children: [
+                    Icon(Icons.location_on, size: 16),
+                    Text("Mogadishu, Somalia"),
+                  ],
+                ),
+                trailing: Icon(Icons.notifications),
+              ),
+              SizedBox(height: 20),
               Row(
                 children: [
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Image.asset("assets/Userimage.png"),
-                  ),
-                  SizedBox(width: 10),
                   Expanded(
-                    child: ListTile(
-                      title: Text("Good Evening"),
-                      subtitle: Text("Ahmed Xasan"),
-                      trailing: Icon(Icons.arrow_back),
+                    child: Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Container(
+                    width: 70,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],
               ),
-
               SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: "Search Properties....",
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 30),
-
               Text(
                 "Categories",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -52,76 +55,84 @@ class HomeScreen extends StatelessWidget {
 
               SizedBox(height: 10),
 
-              SizedBox(
-                height: 100,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+
+                  Expanded(
+                    child: Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20),
+              Text(
+                "Nearby Places",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Flexible(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    mainAxisExtent: 350,
+                  ),
+                  itemCount: 10,
                   itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 30),
-                      child: SizedBox(
-                        // width: 100,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: categories[index].color,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(categories[index].image, width: 50),
-                              Text(categories[index].name),
-                            ],
-                          ),
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset("assets/house1.jpg"),
+                            Text("Yaqshid, Mogadishu"),
+                            Text("4 rooms"),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text("\$200"),
+                            ),
+                          ],
                         ),
                       ),
                     );
                   },
                 ),
               ),
-
-              SizedBox(height: 40),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Featured Properties",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    "View All",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
-      ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // <- Add this line
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.heart_broken_outlined),
-            label: "heart",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_city_outlined),
-            label: "Location",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "User"),
-        ],
       ),
     );
   }
