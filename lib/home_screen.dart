@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/categories_model.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,21 +34,27 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
+                    flex: 2,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        hintText: "Search House",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    flex: 1,
                     child: Container(
+                      width: 70,
                       height: 55,
                       decoration: BoxDecoration(
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                    ),
-                  ),
-                  SizedBox(width: 12),
-                  Container(
-                    width: 70,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],
@@ -58,32 +70,88 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 12.0),
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _selectedIndex = 0;
+                          });
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor: _selectedIndex == 0
+                              ? Colors.black
+                              : Colors.white,
+                          foregroundColor: _selectedIndex == 0
+                              ? Colors.white
+                              : Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(color: Colors.black),
+                          ),
+                          minimumSize: Size.fromHeight(40),
+                        ),
+                        child: Text(
+                          'Houses',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Container(
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 12),
 
                   Expanded(
-                    child: Container(
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 12.0),
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _selectedIndex = 1;
+                          });
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor: _selectedIndex == 1
+                              ? Colors.black
+                              : Colors.white,
+                          foregroundColor: _selectedIndex == 1
+                              ? Colors.white
+                              : Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(color: Colors.black),
+                          ),
+                          minimumSize: Size.fromHeight(40),
+                        ),
+                        child: Text(
+                          'Offices',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: _selectedIndex == 2
+                            ? Colors.black
+                            : Colors.white,
+                        foregroundColor: _selectedIndex == 2
+                            ? Colors.white
+                            : Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(color: Colors.black),
+                        ),
+                        minimumSize: Size.fromHeight(40),
+                      ),
+                      child: Text(
+                        'Apartments',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -102,9 +170,9 @@ class HomeScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    mainAxisExtent: 350,
+                    mainAxisExtent: 200,
                   ),
-                  itemCount: 10,
+                  itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       decoration: BoxDecoration(
@@ -116,13 +184,39 @@ class HomeScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset("assets/house1.jpg"),
-                            Text("Yaqshid, Mogadishu"),
-                            Text("4 rooms"),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text("\$200"),
+                            Image.asset(
+                              categories[index].image,
+                              width: 100,
+                              height: 100,
                             ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.location_on),
+                                SizedBox(width: 20),
+                                Text(categories[index].location),
+                              ],
+                            ),
+
+                            // Row(
+                            //   children: [
+                            //     Icon(Icons.room),
+                            //     Align(
+                            //       alignment: Alignment.bottomLeft,
+                            //       child: Text(
+                            //         categories[index].rooms.toString(),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // Row(
+                            //   children: [
+                            //     Align(
+                            //       alignment: Alignment.centerRight,
+                            //       child: Text("\$${categories[index].price}"),
+                            //     ),
+                            //   ],
+                            // ),
                           ],
                         ),
                       ),

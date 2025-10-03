@@ -2,11 +2,17 @@ import 'package:flutter/cupertino.dart';
 
 class CategoriesModel {
   final String name;
+  final String location;
+  final int rooms;
+  final double price;
   final Color color;
   final String image;
 
   CategoriesModel({
     required this.name,
+    required this.location,
+    required this.rooms,
+    required this.price,
     required this.color,
     required this.image,
   });
@@ -14,18 +20,75 @@ class CategoriesModel {
 
 List<CategoriesModel> categories = [
   CategoriesModel(
-    name: "Apartment",
+    name: "apartment2",
     color: Color(0xFFFFFFFF),
-    image: "assets/apartment.jpg",
+    image: "assets/apartment2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
   ),
   CategoriesModel(
-    name: "House",
+    name: "apartment3",
     color: Color(0xFFFFFFFF),
-    image: "assets/house.jpg",
+    image: "assets/apartment3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
   ),
   CategoriesModel(
-    name: "Office",
+    name: "apartment1",
     color: Color(0xFFFFFFFF),
-    image: "assets/office.jpg",
+    image: "assets/apartment1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house1",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house2",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house3",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office1",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office2",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office3",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
   ),
 ];
