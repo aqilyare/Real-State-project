@@ -31,34 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 trailing: Icon(Icons.notifications),
               ),
               SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        hintText: "Search House",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: "Search House",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: 70,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
+              SizedBox(width: 12),
               SizedBox(height: 20),
               Text(
                 "Categories",
@@ -170,13 +152,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    mainAxisExtent: 200,
+                    mainAxisExtent: 300,
                   ),
                   itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: Colors.grey.shade200,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
@@ -184,39 +166,37 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              categories[index].image,
-                              width: 100,
-                              height: 100,
+                            Flexible(
+                              child: Image.asset(
+                                categories[index].image,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Icon(Icons.location_on),
-                                SizedBox(width: 20),
-                                Text(categories[index].location),
-                              ],
+                            Flexible(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.location_on),
+                                      SizedBox(width: 8),
+                                      Text(categories[index].location),
+                                    ],
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text("4 bedrooms"),
+                                  Text("3 bathrooms"),
+                                  Text("1 kitchicken"),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text("\$${categories[index].price}"),
+                                  ),
+                                ],
+                              ),
                             ),
-
-                            // Row(
-                            //   children: [
-                            //     Icon(Icons.room),
-                            //     Align(
-                            //       alignment: Alignment.bottomLeft,
-                            //       child: Text(
-                            //         categories[index].rooms.toString(),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     Align(
-                            //       alignment: Alignment.centerRight,
-                            //       child: Text("\$${categories[index].price}"),
-                            //     ),
-                            //   ],
-                            // ),
                           ],
                         ),
                       ),

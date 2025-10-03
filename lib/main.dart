@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/home_screen.dart';
+import 'package:realstateproject/login.dart';
 import 'package:realstateproject/main_screen.dart';
 
 void main() {
@@ -16,6 +17,6 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainScreen());
+    return MaterialApp(home: loginScreen());
   }
 }

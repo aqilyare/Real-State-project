@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/home_screen.dart';
+import 'package:realstateproject/main_screen.dart';
 import 'package:realstateproject/registrationScreen.dart';
 
 class loginScreen extends StatefulWidget {
@@ -83,7 +84,7 @@ class _loginScreenState extends State<loginScreen> {
                   ElevatedButton(
                     onPressed: () => Navigator.of(
                       context,
-                    ).push(MaterialPageRoute(builder: (_) => HomeScreen())),
+                    ).push(MaterialPageRoute(builder: (_) => MainScreen())),
                     child: Text("SingIn"),
                   ),
                 ],
