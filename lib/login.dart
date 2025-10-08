@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/home_screen.dart';
+import 'package:realstateproject/main_screen.dart';
 import 'package:realstateproject/registrationScreen.dart';
 
-class loginScreen extends StatefulWidget {
-  const loginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<loginScreen> createState() => _loginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _loginScreenState extends State<loginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +84,7 @@ class _loginScreenState extends State<loginScreen> {
                   ElevatedButton(
                     onPressed: () => Navigator.of(
                       context,
-                    ).push(MaterialPageRoute(builder: (_) => HomeScreen())),
+                    ).push(MaterialPageRoute(builder: (_) => MainScreen())),
                     child: Text("SingIn"),
                   ),
                 ],

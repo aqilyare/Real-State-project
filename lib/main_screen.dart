@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     FavScreen(),
     LocationScreen(),
-    ProfileScreen(),
+    DetailScreen(),
   ];
 
   @override

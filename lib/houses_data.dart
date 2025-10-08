@@ -1,0 +1,77 @@
+import 'package:realstateproject/categories_model.dart';
+import 'package:flutter/material.dart';
+
+List<CategoriesModel> categories = [
+  CategoriesModel(
+    name: "apartment2",
+    color: Color(0xFFFFFFFF),
+    image: "assets/apartment2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "apartment3",
+    color: Color(0xFFFFFFFF),
+    image: "assets/apartment3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "apartment1",
+    color: Color(0xFFFFFFFF),
+    image: "assets/apartment1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house1",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house2",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "house3",
+    color: Color(0xFFFFFFFF),
+    image: "assets/house3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office1",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office1.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office2",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office2.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+  CategoriesModel(
+    name: "office3",
+    color: Color(0xFFFFFFFF),
+    image: "assets/office3.jpg",
+    location: "hodan",
+    rooms: 2,
+    price: 200,
+  ),
+];

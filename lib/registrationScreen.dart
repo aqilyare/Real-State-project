@@ -101,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ElevatedButton(
                     onPressed: () => Navigator.of(
                       context,
-                    ).push(MaterialPageRoute(builder: (_) => loginScreen())),
+                    ).push(MaterialPageRoute(builder: (_) => LoginScreen())),
                     child: Text("SingUp"),
                   ),
                 ],

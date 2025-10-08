@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/categories_model.dart';
+import 'package:realstateproject/offices_data.dart' show office;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,18 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: 70,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ),
@@ -176,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
@@ -184,17 +173,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              categories[index].image,
-                              width: 100,
-                              height: 100,
-                            ),
+                            Image.asset(office[index].image, height: 150),
                             SizedBox(height: 10),
                             Row(
                               children: [
                                 Icon(Icons.location_on),
-                                SizedBox(width: 20),
-                                Text(categories[index].location),
+                                SizedBox(width: 10),
+                                Text(
+                                  categories[index].location,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ],
                             ),
 
