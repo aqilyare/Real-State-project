@@ -46,6 +46,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: 70,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 20),
@@ -159,13 +171,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    mainAxisExtent: 200,
+                    mainAxisExtent: 300,
                   ),
                   itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
+                        color: Colors.grey,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
@@ -173,16 +185,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(office[index].image, height: 150),
+                            Image.asset(
+                              categories[index].image,
+                              width: 100,
+                              height: 100,
+                            ),
                             SizedBox(height: 10),
                             Row(
                               children: [
                                 Icon(Icons.location_on),
-                                SizedBox(width: 10),
-                                Text(
-                                  categories[index].location,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                SizedBox(width: 20),
+                                Text(categories[index].location),
                               ],
                             ),
 
