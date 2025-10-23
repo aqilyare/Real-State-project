@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:realstateproject/Detail.dart';
 import 'package:realstateproject/categories_model.dart';
+import 'package:realstateproject/details_screen.dart';
 import 'package:realstateproject/offices_data.dart' show office;
 
 class HomeScreen extends StatefulWidget {
@@ -175,50 +177,55 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              categories[index].image,
-                              width: 100,
-                              height: 100,
-                            ),
-                            SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Icon(Icons.location_on),
-                                SizedBox(width: 20),
-                                Text(categories[index].location),
-                              ],
-                            ),
+                    return GestureDetector(
+                      onTap: () => Navigator.of(
+                        context,
+                      ).push(MaterialPageRoute(builder: (_) => DScreen())),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                categories[index].image,
+                                width: 100,
+                                height: 100,
+                              ),
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on),
+                                  SizedBox(width: 20),
+                                  Text(categories[index].location),
+                                ],
+                              ),
 
-                            // Row(
-                            //   children: [
-                            //     Icon(Icons.room),
-                            //     Align(
-                            //       alignment: Alignment.bottomLeft,
-                            //       child: Text(
-                            //         categories[index].rooms.toString(),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     Align(
-                            //       alignment: Alignment.centerRight,
-                            //       child: Text("\$${categories[index].price}"),
-                            //     ),
-                            //   ],
-                            // ),
-                          ],
+                              // Row(
+                              //   children: [
+                              //     Icon(Icons.room),
+                              //     Align(
+                              //       alignment: Alignment.bottomLeft,
+                              //       child: Text(
+                              //         categories[index].rooms.toString(),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     Align(
+                              //       alignment: Alignment.centerRight,
+                              //       child: Text("\$${categories[index].price}"),
+                              //     ),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
                     );
