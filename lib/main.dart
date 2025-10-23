@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:realstateproject/home_screen.dart';
-import 'package:realstateproject/login.dart';
-import 'package:realstateproject/main_screen.dart';
+import 'package:realstateproject/main/screens/home_screen.dart';
+import 'package:realstateproject/auth/screens/login.dart';
+import 'package:realstateproject/main/screens/main_screen.dart';
 
 void main() {
   runApp(Myapp());

@@ -1,4 +1,4 @@
-import 'package:realstateproject/categories_model.dart';
+import 'package:realstateproject/data/categories_model.dart';
 import 'package:flutter/material.dart';
 
 List<CategoriesModel> office = [
