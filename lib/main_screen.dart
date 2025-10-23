@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realstateproject/fav_screen.dart';
 import 'package:realstateproject/home_screen.dart';
 import 'package:realstateproject/location_screen.dart';
+import 'package:realstateproject/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     FavScreen(),
     LocationScreen(),
-    DetailScreen(),
+    ProfileScreen(),
   ];
 
   @override
