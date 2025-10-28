@@ -1,6 +1,6 @@
 import express from 'express';
 import { createNewUser, login, } from '../controllers/userController.js';
-import { admin, protect, supperadmin } from '../middlleware/authMidldleware.js';
+import { admin, protect, supperadmin } from '../middleware/authMidldleware.js';
 
 const route = express.Router(); // Mini express app for tasks routes
 

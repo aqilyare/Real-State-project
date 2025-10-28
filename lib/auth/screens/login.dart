@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realstateproject/auth/services/auth_services.dart';
 import 'package:realstateproject/main/screens/home_screen.dart';
 import 'package:realstateproject/main/screens/main_screen.dart';
 import 'package:realstateproject/auth/screens/registrationScreen.dart';
@@ -11,6 +12,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void login() {
+
+    AuthServices().login(
+      context: context,
+      email: emailController.text,
+      password: passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,9 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () => Navigator.of(
-                      context,
-                    ).push(MaterialPageRoute(builder: (_) => MainScreen())),
+                    onPressed: login,
                     child: Text("SingIn"),
                   ),
                 ],
