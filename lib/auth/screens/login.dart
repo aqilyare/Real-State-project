@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:realstateproject/auth/services/auth_services.dart';
-import 'package:realstateproject/main/screens/home_screen.dart';
-import 'package:realstateproject/main/screens/main_screen.dart';
 import 'package:realstateproject/auth/screens/registrationScreen.dart';
+// Removed unused imports (HomeScreen, MainScreen) for now — add them back when you use navigation
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,112 +11,145 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // ✅ Text controllers for email and password fields
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void login() {
+  // ✅ A boolean flag to show loading indicator while logging in
+  bool isLoading = false;
 
-    AuthServices().login(
+  // ✅ Function to handle login button press
+  void login() async {
+    // 🟡 Basic input validation before sending API call
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill in all fields")),
+      );
+      return; // stop execution if fields are empty
+    }
+
+    // 🟢 Show loading spinner while login request is in progress
+    setState(() {
+      isLoading = true;
+    });
+
+    // Call the AuthService login method
+    await AuthServices().login(
       context: context,
-      email: emailController.text,
-      password: passwordController.text,
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
     );
+
+    // 🟢 Hide loading spinner after response
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  // ✅ Dispose controllers to avoid memory leaks
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(
-              flex: 2,
-              child: Center(
-                child: Text(
-                  "Log in",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+      // ✅ Optional SafeArea to prevent content from overlapping system UI
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
 
-            SizedBox(height: 20),
-
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 16.0),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       ElevatedButton(onPressed: () {}, child: Text("Login")),
-            //       ElevatedButton(onPressed: () {}, child: Text("Registration")),
-            //     ],
-            //   ),
-            // ),
-
-            // SizedBox(height: 20),
-            Flexible(
-              flex: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Email Address",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: "Flutter@gmail.com",
-                      fillColor: Colors.grey[200],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: 20),
-
-                  Text(
-                    "Password",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "*******",
-                      fillColor: Colors.grey[200],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: login,
-                    child: Text("SingIn"),
-                  ),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 16),
-            Flexible(
-              flex: 2,
-              child: GestureDetector(
-                onTap: () => Navigator.of(
-                  context,
-                ).push(MaterialPageRoute(builder: (_) => RegisterScreen())),
-                child: Center(
+          // ✅ Scroll view to prevent overflow when keyboard opens
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 50), // space at top for cleaner UI
+                // ✅ Title
+                const Center(
                   child: Text(
-                    "Don't have an account? SingUp",
-                    style: TextStyle(fontSize: 10),
+                    "Log In",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
+
+                const SizedBox(height: 40),
+
+                // ✅ Email Field
+                const Text(
+                  "Email Address",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    hintText: "example@gmail.com",
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // ✅ Password Field
+                const Text(
+                  "Password",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                TextField(
+                  controller: passwordController,
+                  obscureText: true, // hides the password
+                  decoration: InputDecoration(
+                    hintText: "*******",
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // ✅ Login button with loading indicator
+                isLoading
+                    ? const Center(
+                        child:
+                            CircularProgressIndicator(), // shows spinner when loading
+                      )
+                    : SizedBox(
+                        width: double.infinity, // full-width button
+                        child: ElevatedButton(
+                          onPressed: login, // calls login() function
+                          child: const Text("Sign In"), // fixed spelling
+                        ),
+                      ),
+
+                const SizedBox(height: 16),
+
+                // ✅ Registration link
+                Center(
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const RegisterScreen()),
+                    ),
+                    child: const Text(
+                      "Don't have an account? Sign Up", // fixed spelling
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20), // extra spacing at bottom
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
